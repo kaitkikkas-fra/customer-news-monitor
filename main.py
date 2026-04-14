@@ -19,34 +19,85 @@ import feedparser  # For Estonian RSS feeds
 import re
 
 # ============================================================================
-# CONFIGURATION - Your top 15 customers to monitor
+# CONFIGURATION - All customers in Kait's portfolio (47 companies)
 # ============================================================================
 
 CUSTOMERS = [
+    # Top tier (>€20K GP)
     {"name": "Windak OÜ", "search_terms": ["Windak"], "company_id": 4622},
     {"name": "Threod Systems AS", "search_terms": ["Threod Systems", "Threod"], "company_id": 3214},
     {"name": "Stora Enso Eesti AS", "search_terms": ["Stora Enso"], "company_id": 847},
-    {"name": "Kabkin GmbH", "search_terms": ["Kabkin"], "company_id": 5791},
+    {"name": "Kabkin GmbH & Co.KG", "search_terms": ["Kabkin"], "company_id": 5791},
     {"name": "Voka Masin AS", "search_terms": ["Voka Masin"], "company_id": 372},
     {"name": "LTH-Baas AS", "search_terms": ["LTH-Baas", "LTH Baas"], "company_id": 931},
+    
+    # Mid tier (€5K-€20K GP)
+    {"name": "Äike Mobility OÜ", "search_terms": ["Äike", "Aike Mobility"], "company_id": 7064},
     {"name": "CNC Grupp OÜ", "search_terms": ["CNC Grupp"], "company_id": 338},
     {"name": "ERICSSON EESTI AS", "search_terms": ["Ericsson Eesti", "Ericsson Estonia"], "company_id": 11261},
+    {"name": "B&W Metall OÜ", "search_terms": ["B&W Metall", "BW Metall"], "company_id": 944},
     {"name": "Lexa SLT OÜ", "search_terms": ["Lexa SLT"], "company_id": 9136},
+    {"name": "Borg OÜ", "search_terms": ["Borg OÜ"], "company_id": 349},
     {"name": "Shore Link OÜ", "search_terms": ["Shore Link"], "company_id": 6562},
-    {"name": "ECO POINT OÜ", "search_terms": ["ECO POINT", "Eco Point"], "company_id": 582},
     {"name": "GoCraft OÜ", "search_terms": ["GoCraft"], "company_id": 3816},
-    {"name": "DIATEC", "search_terms": ["DIATEC"], "company_id": 12335},
+    
+    # Lower-mid tier (€1K-€5K GP)
     {"name": "Nefab Packaging OÜ", "search_terms": ["Nefab Packaging", "Nefab"], "company_id": 9692},
-    {"name": "Skeleton Technologies", "search_terms": ["Skeleton Technologies"], "company_id": 4693},
+    {"name": "ECO POINT OÜ", "search_terms": ["ECO POINT", "Eco Point"], "company_id": 582},
+    {"name": "Skeleton Technologies GmbH", "search_terms": ["Skeleton Technologies"], "company_id": 4693},
+    {"name": "DIATEC", "search_terms": ["DIATEC"], "company_id": 12335},
+    {"name": "Rapla Metall OÜ", "search_terms": ["Rapla Metall"], "company_id": 432},
+    {"name": "AQ Lasertool OÜ", "search_terms": ["AQ Lasertool"], "company_id": 7989},
+    {"name": "Elelevi OÜ", "search_terms": ["Elelevi"], "company_id": 9669},
+    {"name": "Eesti PäikeseVägi OÜ", "search_terms": ["PäikeseVägi", "Paikesevagi"], "company_id": 9409},
+    {"name": "AQ Components Kodara OÜ", "search_terms": ["AQ Components Kodara"], "company_id": 531},
+    {"name": "Topbox Oy", "search_terms": ["Topbox"], "company_id": 451},
+    {"name": "SKELETON TECHNOLOGIES OÜ", "search_terms": ["Skeleton Technologies"], "company_id": 3186},
+    {"name": "Silikaat AS", "search_terms": ["Silikaat"], "company_id": 11336},
+    {"name": "Tallinna Linnatransport AS", "search_terms": ["Tallinna Linnatransport", "TLT"], "company_id": 11904},
+    {"name": "Starship Technologies OÜ", "search_terms": ["Starship Technologies", "Starship"], "company_id": 2145},
+    {"name": "OÜ TKV Ehitus", "search_terms": ["TKV Ehitus"], "company_id": 1142},
+    {"name": "Demeca Biokaasu Oy", "search_terms": ["Demeca Biokaasu", "Demeca"], "company_id": 317},
+    
+    # Lower tier (€100-€1K GP) - Still worth monitoring
+    {"name": "MultiCharge OÜ", "search_terms": ["MultiCharge"], "company_id": 5747},
+    {"name": "Tamult Tootmine OÜ", "search_terms": ["Tamult"], "company_id": 13422},
+    {"name": "TSG Nordic Gas OÜ", "search_terms": ["TSG Nordic Gas"], "company_id": 10961},
+    {"name": "MyPack OÜ", "search_terms": ["MyPack"], "company_id": 9606},
+    {"name": "Trade Builder Baltic OÜ", "search_terms": ["Trade Builder Baltic"], "company_id": 6800},
+    {"name": "P-Tech OÜ", "search_terms": ["P-Tech"], "company_id": 9113},
+    {"name": "ECOSTEEL PRO OÜ", "search_terms": ["ECOSTEEL PRO", "Ecosteel"], "company_id": 899},
+    {"name": "K.Met AS", "search_terms": ["K.Met"], "company_id": 4652},
+    {"name": "Cleveron AS", "search_terms": ["Cleveron"], "company_id": 4374},
+    {"name": "Nordic Armoury OÜ", "search_terms": ["Nordic Armoury"], "company_id": 1532},
+    {"name": "TERGEN GRUPP OÜ", "search_terms": ["TERGEN GRUPP", "Tergen"], "company_id": 6024},
+    {"name": "10Lines OÜ", "search_terms": ["10Lines"], "company_id": 242},
+    {"name": "Aiameister OÜ", "search_terms": ["Aiameister"], "company_id": 1294},
+    {"name": "Kruuli trükikoja OÜ", "search_terms": ["Kruuli trükikoda", "Kruuli"], "company_id": 11700},
+    {"name": "COMODULE OÜ", "search_terms": ["COMODULE", "Comodule"], "company_id": 323},
+    {"name": "Monitoimi Lätti", "search_terms": ["Monitoimi"], "company_id": 10988},
+    {"name": "LTH-Baas Germany", "search_terms": ["LTH-Baas"], "company_id": 10704},
 ]
 
 # Estonian news RSS feeds (priority sources)
 ESTONIAN_RSS_FEEDS = [
-    {"name": "ERR Business (EE)", "url": "https://www.err.ee/rss/majandus"},
-    {"name": "Postimees Business (EE)", "url": "https://www.postimees.ee/rss/majandus"},
-    {"name": "Delfi Business (EE)", "url": "https://www.delfi.ee/rss/majandus"},
-    {"name": "Äripäev (EE)", "url": "https://www.aripaev.ee/rss"},
-    {"name": "Geenius (EE tech)", "url": "https://geenius.ee/feed/"},
+    # Major Estonian business news
+    {"name": "ERR Business", "url": "https://www.err.ee/rss/majandus"},
+    {"name": "Postimees Business", "url": "https://majandus.postimees.ee/rss"},
+    {"name": "Delfi Business", "url": "https://www.delfi.ee/rss/majandus"},
+    {"name": "Äripäev", "url": "https://www.aripaev.ee/rss"},
+    
+    # Industry-specific (Äripäev network)
+    {"name": "Tööstusuudised", "url": "https://www.toostusuudised.ee/rss"},
+    {"name": "Logistikauudised", "url": "https://www.logistikauudised.ee/rss"},
+    {"name": "Ehitusuudised", "url": "https://www.ehitusuudised.ee/rss"},
+    
+    # Tech news
+    {"name": "Geenius", "url": "https://geenius.ee/feed/"},
+    {"name": "Digigeenius", "url": "https://digi.geenius.ee/feed/"},
+    
+    # Regional news
+    {"name": "ERR Eesti", "url": "https://www.err.ee/rss/eesti"},
 ]
 
 # ============================================================================
@@ -249,9 +300,10 @@ def monitor_customer_news(request=None):
         all_articles.extend(estonian_articles)
         
         # 2. Secondary: Search international news (if API key provided)
-        if news_api_key:
+        # Note: Limited to top customers due to API rate limits
+        if news_api_key and customer.get("company_id") in [4622, 3214, 847, 5791, 372, 931, 7064, 338]:
             print(f"Scanning international news for {customer['name']}...")
-            for term in customer["search_terms"]:
+            for term in customer["search_terms"][:1]:  # Only first term to save API calls
                 intl_articles = search_newsapi(term, from_date, news_api_key)
                 all_articles.extend(intl_articles)
         
@@ -272,7 +324,7 @@ def monitor_customer_news(request=None):
     # Send summary if no news found
     if total_articles_found == 0:
         summary_payload = {
-            "text": f"📰 Daily news scan complete - no mentions found for your {len(CUSTOMERS)} monitored customers."
+            "text": f"📰 Daily news scan complete — no mentions found for your {len(CUSTOMERS)} monitored customers."
         }
         requests.post(slack_webhook_url, json=summary_payload)
     
