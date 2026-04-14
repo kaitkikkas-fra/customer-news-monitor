@@ -1,0 +1,4 @@
+# Customer News Monitor - Dependencies
+requests>=2.28.0
+feedparser>=6.0.0
+functions-framework>=3.0.0  # For Google Cloud Functions
