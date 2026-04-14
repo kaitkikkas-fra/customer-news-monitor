@@ -32,19 +32,19 @@ CUSTOMERS = [
     {"name": "LTH-Baas AS", "search_terms": ["LTH-Baas", "LTH Baas"], "company_id": 931},
     
     # Mid tier (€5K-€20K GP)
-    {"name": "Äike Mobility OÜ", "search_terms": ["Äike", "Aike Mobility"], "company_id": 7064},
+    {"name": "Äike Mobility OÜ", "search_terms": ["Äike Mobility", "Aike Mobility"], "company_id": 7064},
     {"name": "CNC Grupp OÜ", "search_terms": ["CNC Grupp"], "company_id": 338},
-    {"name": "ERICSSON EESTI AS", "search_terms": ["Ericsson Eesti", "Ericsson Estonia"], "company_id": 11261},
+    {"name": "ERICSSON EESTI AS", "search_terms": ["Ericsson", "Ericsson Estonia"], "company_id": 11261},
     {"name": "B&W Metall OÜ", "search_terms": ["B&W Metall", "BW Metall"], "company_id": 944},
     {"name": "Lexa SLT OÜ", "search_terms": ["Lexa SLT"], "company_id": 9136},
-    {"name": "Borg OÜ", "search_terms": ["Borg OÜ"], "company_id": 349},
+    {"name": "Borg OÜ", "search_terms": ["Borg OÜ", "Borg"], "company_id": 349},
     {"name": "Shore Link OÜ", "search_terms": ["Shore Link"], "company_id": 6562},
-    {"name": "GoCraft OÜ", "search_terms": ["GoCraft"], "company_id": 3816},
+    {"name": "GoCraft OÜ", "search_terms": ["GoCraft", "Gocraft"], "company_id": 3816},
     
     # Lower-mid tier (€1K-€5K GP)
     {"name": "Nefab Packaging OÜ", "search_terms": ["Nefab Packaging", "Nefab"], "company_id": 9692},
     {"name": "ECO POINT OÜ", "search_terms": ["ECO POINT", "Eco Point"], "company_id": 582},
-    {"name": "Skeleton Technologies GmbH", "search_terms": ["Skeleton Technologies"], "company_id": 4693},
+    {"name": "Skeleton Technologies GmbH", "search_terms": ["Skeleton Technologies", "Skeleton"], "company_id": 4693},
     {"name": "DIATEC", "search_terms": ["DIATEC"], "company_id": 12335},
     {"name": "Rapla Metall OÜ", "search_terms": ["Rapla Metall"], "company_id": 432},
     {"name": "AQ Lasertool OÜ", "search_terms": ["AQ Lasertool"], "company_id": 7989},
