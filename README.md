@@ -241,3 +241,4 @@ Ask Claude to help you:
 - Change the notification format
 - Add filtering by topic/industry
 - Integrate with other notification channels
+- 
